@@ -10,7 +10,7 @@ public class PrintNTimes
 {
   public static void main(String[] args)
   {
-    String repeatedStar = new String(new char[20]).replace('\0', '-');
-	  System.out.println(repeatedStar);
+	String repeatedStar = new String(new char[20]).replace('\0', '-');
+	System.out.println(repeatedStar);
   }
 }
