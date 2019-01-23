@@ -7,7 +7,6 @@ namespace ConsoleAppReverseString
     {
         private static String ReverseXor(String str)
         {
-
             char[] strArr = str.ToCharArray();
             int length = str.Length - 1;
             for (int i = 0; i < length; i++, length--)
