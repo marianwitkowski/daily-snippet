@@ -1,3 +1,30 @@
+
+/*
+
+ Detect user without cookies, based on browser fingerprint technique
+ 
+ Usage:
+ 
+ Save javascript file content into user-fingerprint.js
+ Create test html page:
+ 
+
+      <html>
+      <head>
+       <script src="user-fingerprint.js"></script> 
+      </head>
+      <body>
+      <div id='fp'></div>
+
+      <script>
+        document.getElementById("fp").innerHTML = fingerprint;
+      </script>
+
+      </body>
+      </html>
+ 
+*/
+
 var fingerprint = (function(window, screen, navigator) {
 
     function murmurhash3_32_gc(key, seed) {
@@ -219,22 +246,3 @@ var fingerprint = (function(window, screen, navigator) {
 
 }(this, screen, navigator));
 
-
-/*
- Usage:
-
-      <html>
-      <head>
-       <script src="fp.js"></script> 
-      </head>
-      <body>
-      <div id='fp'></div>
-
-      <script>
-        document.getElementById("fp").innerHTML = fingerprint;
-      </script>
-
-      </body>
-      </html>
- 
-*/
