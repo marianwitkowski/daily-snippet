@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+ <meta charset="UTF-8">
+ <title>Adblock detector</title>
+
+ <style>
+ .adsbox {
+    background-color: transparent;
+    height: 1px;
+    width: 1px;
+ }
+ </style>
+
+</head>
+<body>
+
+<!-- bait/dummy div -->
+<div id="test">
+ <div class="adsbox"></div>
+</div>
+
+<script>
+
+    //don't forget about little delay after loading page ;)
+    window.setTimeout(function() {
+        var test = document.getElementById("test");
+        if (test.offsetHeight === 0) {
+            alert('Adblock detected!');
+        }
+    }, 500);
+
+</script>
+
+</body>
+</html>
