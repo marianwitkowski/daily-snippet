@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from selenium import  webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
@@ -9,7 +11,7 @@ import time, traceback
 gecko_binary = r'/usr/bin/geckodriver'
 USERNAME = "linkedin_username"
 PASSWORD = "linkedin_password"
-CONTENT = "Hello world! This is message for Linkedin users"
+CONTENT = u"Hello world!"
 
 try:
     driver = webdriver.Firefox(executable_path=gecko_binary)
@@ -39,14 +41,14 @@ try:
     elem = driver.execute_script(" document.getElementsByClassName('share-box__open share-box__trigger')[0].click(); ")
 
     # input content
-    js = "document.getElementsByClassName('mentions-texteditor__content')[0].innerHTML = \"{0}\"; ".format(CONTENT)
-    driver.execute_script(js)
-
+    js = "document.getElementsByClassName('mentions-texteditor__content')[0].innerHTML = arguments[0]; "
+    driver.execute_script(js, CONTENT)
+    
     # remove image preview (if exists)
     time.sleep(2)
     js = " if (document.getElementsByClassName('share-box__preview-close-btn').length>0) document.getElementsByClassName('share-box__preview-close-btn')[0].click(); "
     driver.execute_script(js)
-    
+
     # accept
     js = " document.getElementsByClassName('share-actions__primary-action')[0].click(); "
     driver.execute_script(js)
