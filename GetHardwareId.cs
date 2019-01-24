@@ -1,6 +1,6 @@
 using System;
 using System.Management;
-using System.Text;
+using System.Text; 
 
 namespace GetHardwareIdApp
 {
