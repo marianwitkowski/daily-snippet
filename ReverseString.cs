@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 
-namespace ConsoleAppReverseString
+namespace ConsoleAppReverseString 
 {
     class Program
     {
