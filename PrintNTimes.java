@@ -18,7 +18,7 @@ public class PrintNTimes
 	repeatedHyphens = String.format("%0" + 20 + "d", 0).replace("0", "-");
 	System.out.println(repeatedHyphens);
 	
-	// example #3 - Java 8 usage
+	// example #3 - Java 8 stream api usage
 	repeatedHyphens = String.join("", java.util.Collections.nCopies(20, "-"));
 	System.out.println(repeatedHyphens);
   }
