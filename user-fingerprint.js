@@ -1,10 +1,8 @@
 
 /*
-
  Detect user without cookies, based on browser fingerprint technique
  
  Usage:
- 
  Save javascript file content into user-fingerprint.js
  Create test html page:
  
