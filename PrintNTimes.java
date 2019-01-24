@@ -1,4 +1,4 @@
-/*
+/* 
  Simple way to print N times this same character
  
  Python construction
