@@ -58,7 +58,7 @@ def generate_pesel(from_date=None, to_date=None, gender=None):
     # generate checksum
     check = 1*int(pesel[0]) + 3*int(pesel[1]) + 7*int(pesel[2]) + 9*int(pesel[3]) + 1*int(pesel[4]) + 3*int(pesel[5]) + 7*int(pesel[6]) + 9*int(pesel[7]) + 1*int(pesel[8]) + 3*int(pesel[9]) 
     if check % 10 == 0:
-	    last_digit = 0
+        last_digit = 0
     else:
         last_digit = 10 - (check % 10)
     
@@ -75,4 +75,3 @@ for x in range(10):
 for x in range(10):
     pesel=generate_pesel("1980-01-01", "2019-12-31", gender='M')
     print(pesel)
-	
