@@ -9,7 +9,7 @@ def generate_pesel(from_date=None, to_date=None, gender=None):
     """
         from_date - start date in YYYY-MM-DD in format
         to_date - end date in YYYY-MM-DD in format
-        gender - M for mem, F for women
+        gender - M for men, F for women
     """
 
     if from_date is None:
