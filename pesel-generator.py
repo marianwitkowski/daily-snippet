@@ -68,10 +68,7 @@ def generate_pesel(from_date=None, to_date=None, gender=None):
 
 ###############################################################
 # generate in loop
-for x in range(10):
-    pesel=generate_pesel("1980-01-01", "2019-12-31", gender='F')
+for x in range(20):
+    pesel=generate_pesel("1980-01-01", "2019-12-31", 'F' if x%2 else 'M')
     print(pesel)
 
-for x in range(10):
-    pesel=generate_pesel("1980-01-01", "2019-12-31", gender='M')
-    print(pesel)
