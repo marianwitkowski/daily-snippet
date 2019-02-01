@@ -2,11 +2,20 @@ import json
 import tweepy
 import sys
 
+"""
+    https://cloud.google.com/datastore/docs/reference/libraries#client-libraries-install-python
+    Before using go to "Create Service Account Key Page", generate and save JSON file with credentials
+
+    Set variables before using
+    export GOOGLE_APPLICATION_CREDENTIALS="/Users/test/app/datastore.json"
+"""
+from google.cloud import datastore
+
 # create access tokens and consumer key on https://developer.twitter.com/en/apps by register new app
-consumer_key = 'm6GYBalC1eXXXXXXXXXXXXXXX'
-consumer_secret = 'iYxQh279JZsKcL7RXXXXXXXXXXXXXXX'
-access_token = '133860407-ZI0kjYDNaBHXXXXXXXXXXXXXXX'
-access_token_secret = 'NPrZEIeEMaaUVQzEGXXXXXXXXXXXXXXX'
+consumer_key = 'm6GYBalC1eXXXXXXXXXXXXXX'
+consumer_secret = 'iYxQh279JZsKcL7R9eQVsXXXXXXXXXXXXXXXX'
+access_token = 'XXXXXXXX-ZI0kjYDNaBHfiPBoJ8gAhY17XXXXXXXXXXXXX'
+access_token_secret = 'NPrZEIeEMaaUVQzEG4Nyo4jKTjeMEXXXXXXXXXXXXX'
 
 # looking for these keywords
 hashtags = ['python', 'machinelearning', 'bigdata']
@@ -32,6 +41,22 @@ class TweetStreamListener(tweepy.streaming.StreamListener):
                     for hashtag in tweet['entities']['hashtags']:
                         hashtags.append(hashtag['text'])
                     print(hashtags)
+
+
+                    # The kind for the new entity
+                    kind = 'Tweets'
+                    # The ID for the new entity
+                    name = tweet['id']
+                    # The Cloud Datastore key for the new entity
+                    task_key = datastore_client.key(kind, name)
+
+                    # Prepares the new entity and store tweet data
+                    task = datastore.Entity(key=task_key)
+                    task.update(tweet)
+
+                    # Saves the entity
+                    datastore_client.put(task)
+
                     print "=" * 40
         return True
 
@@ -41,10 +66,13 @@ class TweetStreamListener(tweepy.streaming.StreamListener):
             sys.stderr.write('Too Many Requests')
             return True
         else:
-            sys.stderr.write('Error {}\n'.format(status))
+            sys.stderr.write('Error {}n'.format(status))
             return True
 
 if __name__ == '__main__':
+
+    # Instantiates a client of GCP datastore
+    datastore_client = datastore.Client()
 
     # create instance of the tweepy tweet stream listener
     listener = TweetStreamListener()
