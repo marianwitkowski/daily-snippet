@@ -11,7 +11,7 @@ access_token_secret = 'NPrZEIeEMaaUVQzEGXXXXXXXXXXXXXXX'
 # looking for these keywords
 hashtags = ['python', 'machinelearning', 'bigdata']
 # in these languages
-lng = ['pl']
+lng = ['en']
 
 class TweetStreamListener(tweepy.streaming.StreamListener):
 
