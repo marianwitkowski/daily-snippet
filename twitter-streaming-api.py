@@ -18,7 +18,7 @@ access_token = 'XXXXXXXX-ZI0kjYDNaBHfiPBoJ8gAhY17XXXXXXXXXXXXX'
 access_token_secret = 'NPrZEIeEMaaUVQzEG4Nyo4jKTjeMEXXXXXXXXXXXXX'
 
 # looking for these keywords
-hashtags = ['python', 'machinelearning', 'bigdata']
+keywords = ['python', 'machinelearning', 'bigdata']
 # in these languages
 lng = ['en']
 
@@ -85,4 +85,4 @@ if __name__ == '__main__':
     stream = tweepy.Stream(auth, listener)
 
     # search twitter for hashtags list
-    stream.filter(languages=lng, track=hashtags)
+    stream.filter(languages=lng, track=keywords)
