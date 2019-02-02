@@ -4,10 +4,10 @@ import sys
 
 """
     https://cloud.google.com/datastore/docs/reference/libraries#client-libraries-install-python
-    Before using go to "Create Service Account Key Page", generate and save JSON file with credentials
+    Before using click "Create Service Account Key Page" button, generate and save JSON file with credentials
 
-    Set variables before using
-    export GOOGLE_APPLICATION_CREDENTIALS="/Users/test/app/datastore.json"
+    Set variables before using command line
+    $ export GOOGLE_APPLICATION_CREDENTIALS="/Users/test/app/datastore.json"
 """
 from google.cloud import datastore
 
