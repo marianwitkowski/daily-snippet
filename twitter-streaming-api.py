@@ -63,10 +63,10 @@ class TweetStreamListener(tweepy.streaming.StreamListener):
     # on failure
     def on_error(self, status):
         if status == 420:
-            sys.stderr.write('Too Many Requests')
+            sys.stderr.write('Too Many Requests\n')
             return True
         else:
-            sys.stderr.write('Error {}n'.format(status))
+            sys.stderr.write('Error {}\n'.format(status))
             return True
 
 if __name__ == '__main__':
