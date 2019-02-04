@@ -1,3 +1,10 @@
+
+"""
+install required packages:
+$ sudo pip install google-cloud-datastore
+$ sudo pip install tweepy
+"""
+
 import json
 import tweepy
 import sys
