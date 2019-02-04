@@ -24,10 +24,10 @@ consumer_secret = 'iYxQh279JZsKcL7R9eQVsXXXXXXXXXXXXXXXX'
 access_token = 'XXXXXXXX-ZI0kjYDNaBHfiPBoJ8gAhY17XXXXXXXXXXXXX'
 access_token_secret = 'NPrZEIeEMaaUVQzEG4Nyo4jKTjeMEXXXXXXXXXXXXX'
 
-# looking for these keywords
+# looking for these keywords in tweets
 keywords = ['python', 'machinelearning', 'bigdata']
-# in these languages
-lng = ['en']
+# for these languages
+lng = ['en', 'pl']
 
 class TweetStreamListener(tweepy.streaming.StreamListener):
 
