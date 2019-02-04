@@ -11,7 +11,7 @@ const request = require('request-promise')
 let URL = "http://www.onet.pl/";
 
 /*
- Generate long  long lived access token
+ Generate long lived access token
  https://sujipthapa.co/blog/generating-never-expiring-facebook-page-access-token
 */
 let ACCESS_TOKEN = "EAANITTvh38gBAF4TtxZCSmrhkVkHeZCIm6ZAP2QZBiwy4SCuhFpYTmsrvy7FYAmHc4GVZC4yMdpjWc4ZCswojBa6EnKoRPD8GzUOzCFPuGuuTJYMS0s9w1UOF9pzS0JfZCIKi9g8B86PNZAZB7tn3USxVwNXpZBLdecPeBclZA3DUL7WIpiwBWYrAqB"
