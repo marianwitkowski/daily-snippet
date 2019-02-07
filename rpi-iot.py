@@ -54,4 +54,4 @@ while True:
     print(payload)
     # publish message to rpi3iot/data topic
     myMQTTClient.publish("rpi3iot/data", payload, 0)
-    time.sleep(5) 
+    time.sleep(15) 
