@@ -55,3 +55,15 @@ while True:
     # publish message to rpi3iot/data topic
     myMQTTClient.publish("rpi3iot/data", payload, 0)
     time.sleep(15) 
+    
+
+"""
+Some date received after subscribing rpi3iot/data:
+
+
+{"humidity": 32.0, "ts": "2019-02-07T14:10:28Z", "temperature": 23.0}
+qos : 0, retain : false, cmd : publish, dup : false, topic : rpi3iot/data, messageId : , length : 83, Raw payload : 1233410411710910510010511612134583251504648443234116115345832345048495745485045485584495258494858505690344432341161011091121011149711611711410134583250514648125
+{"humidity": 32.0, "ts": "2019-02-07T14:10:23Z", "temperature": 23.0}
+qos : 0, retain : false, cmd : publish, dup : false, topic : rpi3iot/data, messageId : , length : 83, Raw payload : 1233410411710910510010511612134583251504648443234116115345832345048495745485045485584495258494858505190344432341161011091121011149711611711410134583250514648125
+
+"""
