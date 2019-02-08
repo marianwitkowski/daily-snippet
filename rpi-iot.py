@@ -26,7 +26,7 @@ myMQTTClient.configureEndpoint("a3qm4xq6to69h1-ats.iot.eu-west-1.amazonaws.com",
 """
  Register new IoT device on
  https://eu-west-1.console.aws.amazon.com/iot/home?region=eu-west-1#/thinghub
- and generate cartificate and private key for connect to IoT gateway
+ generate certificate and private key for connect to IoT gateway
 """
 myMQTTClient.configureCredentials("AmazonRootCA1.pem", "0be434299b-private.pem.key", "0be434299b-certificate.pem.crt")
 
