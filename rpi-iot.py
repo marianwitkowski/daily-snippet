@@ -48,12 +48,15 @@ while True:
     now = datetime.utcnow()
     current_time = now.strftime('%Y-%m-%dT%H:%M:%SZ')
     # read temperature and humidity from DHT11 module
+    # 2nd parameter of Adafruit_DHT.read_retry function is a sensor pin number
     humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, 15)
+    # prepare payload data, could be in any format, not only JSON
     data = { "ts" : current_time, "temperature" : temperature, "humidity" : humidity }
     payload = json.dumps(data)
     print(payload)
     # publish message to rpi3iot/data topic
     myMQTTClient.publish("rpi3iot/data", payload, 0)
+    # wait for next measure
     time.sleep(15) 
     
 
