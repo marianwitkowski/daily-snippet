@@ -38,7 +38,7 @@ while True:
         # collect data into bulk
         print "Sending data...."
         inserted = client.push_rows('iot', 'room', readings)
-	      print(inserted)
+	print(inserted)
         readings=[]
 
     time.sleep(4) 
