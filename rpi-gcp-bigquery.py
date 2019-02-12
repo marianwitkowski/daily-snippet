@@ -10,7 +10,7 @@ import json
 #
 from bigquery import get_client
 
-'''
+"""
 Don't forget create database and table in BigQuery
 Save structure below into tbl.json file
 
@@ -34,7 +34,7 @@ Launch Google Cloud Shell and execute:
 login@cloudshell:~ (biqqueryiot)$ bq mk iot
 login@cloudshell:~ (biqqueryiot)$ bq mk -t biqqueryiot:iot.room tbl.json
 
-'''
+"""
 
 # BigQuery project id
 project_id = 'biqqueryiot'
