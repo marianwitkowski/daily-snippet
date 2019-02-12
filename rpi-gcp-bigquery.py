@@ -39,6 +39,7 @@ while True:
         print "Sending data...."
         inserted = client.push_rows('iot', 'room', readings)
 	print(inserted)
-        readings=[]
+	if inserted:
+            readings=[]
 
     time.sleep(4) 
