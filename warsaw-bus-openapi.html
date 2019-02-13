@@ -28,6 +28,7 @@
         var selectedLine = 105;
         var buses = [];
         var map = null;
+        var group = new L.featureGroup();
         var markersLayer = new L.LayerGroup();
         var initMap = false;
 
@@ -41,10 +42,12 @@
                         attribution: '&copy; ' + mapLink + ' Contributors',
                         maxZoom: 18,
                     }).addTo(map);
+                map.addLayer(markersLayer);
                 initMap = true;
             }
-
+            
             markersLayer.clearLayers();
+            map.removeLayer(markersLayer);
             
             var markerArray = [];
             for (var i = 0; i < buses.length; i++) {
@@ -53,13 +56,26 @@
                 markersLayer.addLayer(marker);
                 markerArray.push(L.marker([buses[i][1], buses[i][2]]));
             }
-            markersLayer.addTo(map);
+            if (buses.length>0) {
+                //markersLayer.addTo(map);
+                map.addLayer(markersLayer);
+            }
             
             if (markerArray.length>0) {
-                var group = L.featureGroup(markerArray).addTo(map);
+                map.removeLayer(group);
+                group = L.featureGroup(markerArray).addTo(map);
                 map.fitBounds(group.getBounds());
             } else {
                 map.setView([52.2297700, 21.0117800], 11);
+                index=0;
+                map.eachLayer(function (layer) {
+                    if (index==0) {
+                        index++;
+                    } else {
+                        console.log(layer);
+                        map.removeLayer(layer);
+                    }
+                });
             }
 
         }
