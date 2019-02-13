@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Warszawa - komunikacja</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
+</head>
+
+<body style="font-family: tahoma;">
+    <h5 id="info"></h5>
+    <div id="map" style="width: 1024px; height: 600px"></div>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    
+    <script>
+
+        var buses = [];
+        var map = null;
+        var markersLayer = new L.LayerGroup();
+        var initMap = false;
+
+        function drawMap() {
+            if (!initMap) {
+                map = L.map('map').setView([52.2297700, 21.0117800], 12);
+                mapLink =
+                    '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+                L.tileLayer(
+                    'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; ' + mapLink + ' Contributors',
+                        maxZoom: 18,
+                    }).addTo(map);
+                initMap = true;
+            }
+
+            markersLayer.clearLayers()
+
+            for (var i = 0; i < buses.length; i++) {
+                marker = new L.marker([buses[i][1], buses[i][2]])
+                    .bindPopup(buses[i][0]);
+                markersLayer.addLayer(marker);
+            }
+            markersLayer.addTo(map);
+
+        }
+
+        function loadData() {
+            /*
+                proxy for "Autobusy i tramwaje online" API data from https://api.um.warszawa.pl/
+            */
+            var jqxhr = $.get("http://217.182.77.170/wawa/index.php?r=" + new Date().getTime(), function(data) {
+                    r = JSON.parse(data);
+                    buses = [];
+                    results = r.result;
+                    $.each(results, function(key, val) {
+                        buses.push(["Nr linii: " + val.Lines + "<br/>Czas: " + val.Time, val.Lat, val.Lon]);
+                    });
+                    var d = new Date();
+                    $("#info").text("Lokalizacja autobusów linii 105 - aktualizacja " + d.toLocaleDateString() + " " + d.toLocaleTimeString());
+                    console.log(buses);
+                    drawMap();
+                })
+                .fail(function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus);
+                });
+        }
+
+        $(document).ready(function() {
+            loadData();
+            setInterval(function() {
+                loadData();
+            }, 10000);
+
+        });
+    </script>
+</body>
+
+</html>
