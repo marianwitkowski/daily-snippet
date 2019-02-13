@@ -44,14 +44,23 @@
                 initMap = true;
             }
 
-            markersLayer.clearLayers()
-
+            markersLayer.clearLayers();
+            
+            var markerArray = [];
             for (var i = 0; i < buses.length; i++) {
                 marker = new L.marker([buses[i][1], buses[i][2]])
                     .bindPopup(buses[i][0]);
                 markersLayer.addLayer(marker);
+                markerArray.push(L.marker([buses[i][1], buses[i][2]]));
             }
             markersLayer.addTo(map);
+            
+            if (markerArray.length>0) {
+                var group = L.featureGroup(markerArray).addTo(map);
+                map.fitBounds(group.getBounds());
+            } else {
+                map.setView([52.2297700, 21.0117800], 11);
+            }
 
         }
 
