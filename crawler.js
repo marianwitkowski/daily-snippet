@@ -27,6 +27,6 @@ c.queue(
         'http://onet.pl/',
         'http://wp.pl/',
         'http://gazeta.pl/',
-        'https://onet.pl/',
+        'https://wykop.pl/',
     ]);
     
