@@ -34,6 +34,7 @@ Robotic Process Automation
 Mobile First
 Industry 4.0
 Chatbots
+Machine Learning
 Data Mining
 Actionable Analytics
 Net Neutrality
