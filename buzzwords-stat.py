@@ -54,13 +54,13 @@ Zettabyte Era
 items = KEYWORDS.split("\n")
 result = {}
 total = 0.0
-google_seach = GoogleSearch()
+google_search = GoogleSearch()
 
 # don't execute too often - Google will detect unusual network activity and return HTTP Error 429
 for item in items:
     phrase = item.strip()
     if len(phrase):
-        response = google_seach.search('"{}"'.format(phrase))
+        response = google_search.search('"{}"'.format(phrase))
         found_search = int(response.total) / float(1E6)
         print("Result '{}' = {}".format(phrase, found_search))
         result[phrase] = found_search
